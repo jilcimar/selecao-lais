@@ -50,13 +50,13 @@
                                 </a>
                                 <ul class="ml-menu">
                                     <li>
-                                        <a href="pages/widgets/cards/basic.html">Basic</a>
+                                        <a href="#">Basic</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/cards/colored.html">Colored</a>
+                                        <a href="#">Colored</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/cards/no-header.html">No Header</a>
+                                        <a href="#">No Header</a>
                                     </li>
                                 </ul>
                             </li>
@@ -66,19 +66,13 @@
                                 </a>
                                 <ul class="ml-menu">
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-1.html">Infobox-1</a>
+                                        <a href="#">Infobox-1</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-2.html">Infobox-2</a>
+                                        <a href="#">Infobox-2</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-3.html">Infobox-3</a>
-                                    </li>
-                                    <li>
-                                        <a href="pages/widgets/infobox/infobox-4.html">Infobox-4</a>
-                                    </li>
-                                    <li>
-                                        <a href="pages/widgets/infobox/infobox-5.html">Infobox-5</a>
+                                        <a href="#">Infobox-3</a>
                                     </li>
                                 </ul>
                             </li>
@@ -92,22 +86,13 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="{{ url('/basic-form') }}">Basic Form Elements</a>
+                                <a href="#">Basic Form Elements</a>
                             </li>
                             <li>
-                                <a href="{{ url('/advanced-form') }}">Advanced Form Elements</a>
+                                <a href="#">Advanced Form Elements</a>
                             </li>
                             <li>
-                                <a href="pages/forms/form-examples.html">Form Examples</a>
-                            </li>
-                            <li>
-                                <a href="pages/forms/form-validation.html">Form Validation</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('/wizard-form') }}">Form Wizard</a>
-                            </li>
-                            <li>
-                                <a href="pages/forms/editors.html">Editors</a>
+                                <a href="#">Form Examples</a>
                             </li>
                         </ul>
                     </li>
@@ -118,13 +103,13 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/tables/normal-tables.html">Normal Tables</a>
+                                <a href="#">Normal Tables</a>
                             </li>
                             <li>
-                                <a href="{{ url('/jquery-datatable') }}">Jquery Datatables</a>
+                                <a href="#">Jquery Datatables</a>
                             </li>
                             <li>
-                                <a href="pages/tables/editable-table.html">Editable Tables</a>
+                                <a href="#">Editable Tables</a>
                             </li>
                         </ul>
                     </li>
