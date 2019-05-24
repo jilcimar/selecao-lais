@@ -2,10 +2,8 @@
 @section('content')
 <body class="fp-page">
     <div class="fp-box">
-        <div class="logo">
-            <a href="javascript:void(0);">Admin<b>BSB</b></a>
-            <small>Admin BootStrap Based - Material Design</small>
-        </div>
+        @include('auth.includes.logo')
+
         <div class="card">
             <div class="body">
                 <form id="forgot_password" action="{{ route('password.email') }}" method="POST">

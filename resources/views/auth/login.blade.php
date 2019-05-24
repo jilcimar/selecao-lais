@@ -2,10 +2,7 @@
 @section('content')
 <body class="login-page">
     <div class="login-box">
-        <div class="logo">
-            <a href="javascript:void(0);">Admin<b>BSB</b></a>
-            <small>Admin BootStrap Based - Material Design</small>
-        </div>
+       @include('auth.includes.logo')
         <div class="card">
             <div class="body">
                 <form id="sign_in" method="POST" action="{{ route('login') }}">
