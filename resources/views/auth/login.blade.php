@@ -63,7 +63,16 @@
                             <label for="rememberme">Lembre-me</label>
                         </div>
                         <div class="col-xs-4">
-                            <button class="btn btn-block bg-pink waves-effect" onclick="envia();">ENTRAR</button>
+                            <button class="btn btn-block bg-pink waves-effect" type="submit">ENTRAR</button>
+                        </div>
+                    </div>
+                    <div class="row m-t-15 m-b--20">
+                        <div class="col-xs-12">
+                            <a class="btn btn-block btn-default waves-effect"
+                                    href="{{url('/login/google')}}">
+                                LOGIN COM GOOGLE
+                                <img src="{{asset('images/google.png')}}" width="20px" height="20px">
+                            </a>
                         </div>
                     </div>
                     <div class="row m-t-15 m-b--20">
