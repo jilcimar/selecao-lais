@@ -40,76 +40,30 @@
 
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">widgets</i>
-                            <span>Widgets</span>
+                            <i class="material-icons">people</i>
+                            <span>Profissionais</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>Cards</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="#">Basic</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Colored</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">No Header</a>
-                                    </li>
-                                </ul>
+                                <a href="#">Cadastrar</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>Infobox</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="#">Infobox-1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Infobox-2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Infobox-3</a>
-                                    </li>
-                                </ul>
+                                <a href="#">Listar</a>
+                            </li>
+                            <li>
+                                <a href="#">Importar dados</a>
                             </li>
                         </ul>
                     </li>
 
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">assignment</i>
-                            <span>Forms</span>
+                            <i class="material-icons">timeline</i>
+                            <span>Indicadores</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="#">Basic Form Elements</a>
-                            </li>
-                            <li>
-                                <a href="#">Advanced Form Elements</a>
-                            </li>
-                            <li>
-                                <a href="#">Form Examples</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">view_list</i>
-                            <span>Tables</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="#">Normal Tables</a>
-                            </li>
-                            <li>
-                                <a href="#">Jquery Datatables</a>
-                            </li>
-                            <li>
-                                <a href="#">Editable Tables</a>
+                                <a href="#">Ver indicadores</a>
                             </li>
                         </ul>
                     </li>
