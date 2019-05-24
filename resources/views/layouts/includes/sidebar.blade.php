@@ -38,14 +38,14 @@
                         </a>
                     </li>
 
-                    <li>
+                    <li class="{{ request()->is('profissionais/*') ? 'active' : '' }}">
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">people</i>
                             <span>Profissionais</span>
                         </a>
                         <ul class="ml-menu">
-                            <li>
-                                <a href="#">Cadastrar</a>
+                            <li class="{{ request()->is('profissionais/create') ? 'active' : '' }}">
+                                <a href="{{url('profissionais/create')}}">Cadastrar</a>
                             </li>
                             <li>
                                 <a href="#">Listar</a>
