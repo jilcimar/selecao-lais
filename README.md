@@ -28,7 +28,9 @@ padrões do projeto.
 
 É preciso rodar o seguinte comando para preencher o campo `APP_KEY` no `.env`.
 
-- `php artisan key:generate`
+ ```bash 
+$ php artisan key:generate
+```
 
 
 ### Migração para ciração do banco de dados
