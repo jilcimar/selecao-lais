@@ -26,9 +26,9 @@ class CreateProfissionaisTable extends Migration
             $table->integer('tipo_id');
             $table->integer('vinculacao_id');
 
-            $table->foreign('cbo_id')->references('id')->on('cbos');
-            $table->foreign('tipo_id')->references('id')->on('tipos');
-            $table->foreign('vinculacao_id')->references('id')->on('vinculacoes');
+            $table->foreign('cbo_id')->references('id')->on('cbos')->onDelete('cascade');
+            $table->foreign('tipo_id')->references('id')->on('tipos')->onDelete('cascade');
+            $table->foreign('vinculacao_id')->references('id')->on('vinculacoes')->onDelete('cascade');
 
             $table->softDeletes();
             $table->timestamps();
