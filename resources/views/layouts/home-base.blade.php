@@ -19,6 +19,12 @@
     <link href="{{ asset('plugins/animate-css/animate.css') }}" rel="stylesheet" />
     <!-- Custom Css -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+
+    @yield('head-extra')
+
 </head>
 
 @yield('content')

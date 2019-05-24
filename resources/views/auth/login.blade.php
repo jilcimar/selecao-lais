@@ -1,4 +1,27 @@
 @extends('layouts.home-base')
+
+@section('head-extra')
+    <script>
+        function envia() {
+            $.ajax({
+                url: 'http://localhost:8000/public/oauth/token',
+                type: 'post',
+
+                data:{
+                    'grant_type':'password',
+                    'client_id':'2',
+                    'client_secret':'FDTvNfN1oZDkzcLDyBs5lrn0vHpdmLScOtUeS7jz',
+                    'username':'admin@gmail.com',
+                    'password':'123456'
+                },
+                success:function (data) {
+                    window.localStorage.setItem('token', data.acceess_token);
+                    window.localStorage.setItem('refresh_token', data.refresh_token);
+                }
+            });
+        }
+    </script>
+@endsection
 @section('content')
 <body class="login-page">
     <div class="login-box">
@@ -40,7 +63,7 @@
                             <label for="rememberme">Lembre-me</label>
                         </div>
                         <div class="col-xs-4">
-                            <button class="btn btn-block bg-pink waves-effect" type="submit">ENTRAR</button>
+                            <button class="btn btn-block bg-pink waves-effect" onclick="envia();">ENTRAR</button>
                         </div>
                     </div>
                     <div class="row m-t-15 m-b--20">
@@ -58,5 +81,8 @@
 @endsection
 
 @section('footer-extra')
-<script src="{{ asset('js/pages/examples/sign-in.js') }}"></script>
+    <script>
+
+    </script>
+    <script src="{{ asset('js/pages/examples/sign-in.js') }}"></script>
 @endsection
