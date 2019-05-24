@@ -21,21 +21,6 @@ Caso esse requerimento seja satisfeito, basta rodar os seguintes comandos:
 $ composer update
 ```
 
-
-### Migração para ciração do banco de dados
-
-Os seguintes comandos devem ser executados no setup do projeto:
-
-```bash
-$ php artisan migrate
-```
-
-Caso as migrações já tenham sido executadas elas podem ser desfeitas com o seguinte comando:
-
-```bash
-$ php artisan migrate:rollback
-```
-
 ### Configuração do .env
 
 Deve existir um arquivo .env no diretório raiz do projeto. Um arquivo `.env.example é fornecido contendo as configurações
@@ -45,6 +30,23 @@ padrões do projeto.
 
 - `php artisan key:generate`
 
+
+### Migração para ciração do banco de dados
+
+Os seguintes comandos devem ser executados no setup do projeto:
+
+```bash
+$ php artisan migrate
+$ php artisan db:seed
+```
+
+Caso as migrações já tenham sido executadas elas podem ser desfeitas com o seguinte comando:
+
+```bash
+$ php artisan migrate:rollback
+```
+
+
 ## Executar o projeto
 
 Após essas configurações, o projeto pode ser executado normalmente! 
@@ -52,7 +54,11 @@ Após essas configurações, o projeto pode ser executado normalmente!
 
 # Acesso ao sistema
 
-Para acessar o sistema é preciso fazer o cadastro clicando no link "Cadastre-se"
-e em seguida efetuar o login.  
+Para acessar o sistema use as seguintes credenciais:
+
+- Login: admin@gmail.com
+- Senha: 123456
+
+
 
 ##### JIlcimar da Silva Fernandes :)
