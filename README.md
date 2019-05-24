@@ -34,6 +34,13 @@ $ php artisan key:generate
 
 
 ### Migração para ciração do banco de dados
+Para o SQLITE funcionar é preciso adicionar um arquivo 
+com o nome `database.sqlite` no diretório`database` do projeto:
+
+```bash 
+database/database.sqlite
+```
+
 
 Os seguintes comandos devem ser executados no setup do projeto:
 
@@ -53,6 +60,16 @@ $ php artisan migrate:rollback
 
 Após essas configurações, o projeto pode ser executado normalmente! 
 
+```bash
+$ php artisan serve
+```
+ou 
+
+```bash
+$ ./artisan serve
+```
+
+O sistema irá rodar locamente na porta 8000.
 
 # Acesso ao sistema
 
