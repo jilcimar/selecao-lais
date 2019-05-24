@@ -38,7 +38,7 @@
                         </a>
                     </li>
 
-                    <li class="{{ request()->is('profissionais/*') ? 'active' : '' }}">
+                    <li class="{{ request()->is('profissionais*') ? 'active' : '' }}">
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">people</i>
                             <span>Profissionais</span>
@@ -47,8 +47,8 @@
                             <li class="{{ request()->is('profissionais/create') ? 'active' : '' }}">
                                 <a href="{{url('profissionais/create')}}">Cadastrar</a>
                             </li>
-                            <li>
-                                <a href="#">Listar</a>
+                            <li class="{{ request()->is('profissionais') ? 'active' : '' }}">
+                                <a href="{{url('profissionais')}}">Listar</a>
                             </li>
                             <li>
                                 <a href="#">Importar dados</a>
