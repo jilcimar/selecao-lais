@@ -21,18 +21,6 @@ Caso esse requerimento seja satisfeito, basta rodar os seguintes comandos:
 $ composer update
 ```
 
-### Configuração do .env
-
-Deve existir um arquivo .env no diretório raiz do projeto. Um arquivo `.env.example é fornecido contendo as configurações
-padrões do projeto.
-
-É preciso rodar o seguinte comando para preencher o campo `APP_KEY` no `.env`.
-
- ```bash 
-$ php artisan key:generate
-```
-
-
 ### Migração para ciração do banco de dados
 Para o SQLITE funcionar é preciso adicionar um arquivo 
 com o nome `database.sqlite` no diretório`database` do projeto:
@@ -40,7 +28,6 @@ com o nome `database.sqlite` no diretório`database` do projeto:
 ```bash 
 database/database.sqlite
 ```
-
 
 Os seguintes comandos devem ser executados no setup do projeto:
 
@@ -55,6 +42,29 @@ Caso as migrações já tenham sido executadas elas podem ser desfeitas com o se
 $ php artisan migrate:rollback
 ```
 
+### Configuração do .env
+
+Deve existir um arquivo .env no diretório raiz do projeto. Um arquivo `.env.example é fornecido contendo as configurações
+padrões do projeto.
+
+É preciso rodar o seguinte comando para preencher o campo `APP_KEY` no `.env`.
+
+ ```bash 
+$ php artisan key:generate
+```
+
+Além disso, ainda no no `.env`. é preciso colocar a URL da API no parâmetro `API_URL` , iremos colocar
+localmente mas em uma porta diferente da que vai rodar o sistema (O sistema irá rodar na `:8000`) e a API 
+na `:9000` por exemplo:
+
+ ```bash 
+API_URL=http://localhost:9000
+```
+Para executar a API localmente nessa porta, execute o seguinte comando:
+
+ ```bash 
+$ php artisan serve --port=9000
+```
 
 ## Executar o projeto
 
@@ -70,6 +80,8 @@ $ ./artisan serve
 ```
 
 O sistema irá rodar locamente na porta 8000.
+
+Agora é só acessar no navegador http://localhost:8000/
 
 # Acesso ao sistema
 

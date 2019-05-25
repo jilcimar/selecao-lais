@@ -11,17 +11,31 @@
 |
 */
 
+Auth::routes();
+
+
 Route::group( ['middleware' => 'auth'], function()
 {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    /*
+    |--------------------------------------------------------------------------
+    | PROFISSIONAIS
+    |--------------------------------------------------------------------------
+    |
+    */
 
     Route::resource('profissionais','ProfissionalController');
 
-
 });
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/*
+|--------------------------------------------------------------------------
+| ROTAS DA AUTENTICAÇÃO OAUTH COM GOOGLE
+|--------------------------------------------------------------------------
+|
+*/
 
 Route::get('login/google', 'Auth\LoginController@redirectToProvider');
 Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');

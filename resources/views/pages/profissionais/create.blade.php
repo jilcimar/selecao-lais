@@ -34,57 +34,100 @@
                     </h2>
                 </div>
                 <div class="body">
-                    <form class="form-material" action="#" method="post" enctype="multipart/form-data">
+                    <form class="form-material" action="{{route('profissionais.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <label for="nome">Nome</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" id="nome" name="nome" class="form-control" placeholder="Digite o nome do profissionao" required>
+                                <input type="text" id="nome" value="{{old('nome') }}" name="nome" class="form-control" placeholder="Digite o nome do profissionao" required>
                             </div>
+                            @if ($errors->has('nome'))
+                                <span class="invalid-feedback">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                            @endif
                         </div>
+
 
                         <label for="cns">CNS</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="number" id="cns" name="cns" class="form-control" placeholder="Digite o número CNS" required>
+                                <input type="number" value="{{ old('cns') }}" id="cns" name="cns" class="form-control" placeholder="Digite o número CNS" required>
                             </div>
+                            @if ($errors->has('cns'))
+                                <span class="invalid-feedback">
+                                <strong>{{ $errors->first('cns') }}</strong>
+                            </span>
+                            @endif
                         </div>
+
+
 
                         <label for="data_atribuicao">Data de Atribuição</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="date" id="data_atribuicao" name="data_atribuicao" class="form-control" placeholder="Digite a data de atribuição" required>
+                                <input type="date" value="{{ old('data_atribuicao') }}" id="data_atribuicao" name="data_atribuicao" class="form-control" placeholder="Digite a data de atribuição" required>
                             </div>
+                            @if ($errors->has('data_atribuicao'))
+                                <span class="invalid-feedback">
+                                <strong>{{ $errors->first('data_atribuicao') }}</strong>
+                            </span>
+                            @endif
                         </div>
+
 
                         <label for="data_atribuicao">CH</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="number" id="carga_horaria" name="carga_horaria" class="form-control" placeholder="Digite a Carga Horária" required>
+                                <input type="number" value="{{ old('carga_horaria') }}" id="carga_horaria" name="carga_horaria" class="form-control" placeholder="Digite a Carga Horária" required>
                             </div>
+                            @if ($errors->has('carga_horaria'))
+                                <span class="invalid-feedback">
+                                <strong>{{ $errors->first('carga_horaria') }}</strong>
+                            </span>
+                            @endif
                         </div>
+
 
                         <label for="sus">SUS?</label>
                         <div class="form-group">
                             <div class="form-line">
                                 <div class="switch">
-                                    <label>NÃO<input type="checkbox" id="sus"  value="{{true}}"><span class="lever"></span>SIM</label>
+                                    <input name="sus" value="1" type="radio" id="sim">
+                                    <label for="sim">SIM</label>
+                                    <br>
+                                    <input name="sus" value="0" type="radio" id="nao">
+                                    <label for="nao">NÃO</label>
                                 </div>
                             </div>
+                            @if ($errors->has('sus'))
+                                <span class="invalid-feedback">
+                                <strong>{{ $errors->first('sus') }}</strong>
+                            </span>
+                            @endif
                         </div>
 
-                        <label for="cbo">CBO</label>
+
+
+                        <label for="cbo_id">CBO</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <select class="form-control show-tick" id="cbo" data-live-search="true" name="cbo" required>
+                                <select class="form-control show-tick" id="cbo_id"  data-live-search="true" name="cbo_id" required>
                                     <option disabled value="" selected>Selecione um CBO</option>
                                     @foreach($cbos as $cbo)
                                         <option value="{{$cbo->id}}">{!! $cbo->codigo  !!} - {!!$cbo->descricao!!}</option>
                                     @endforeach
                                 </select>
                             </div>
+                            @if ($errors->has('cbo_id'))
+                                <span class="invalid-feedback">
+                                <strong>{{ $errors->first('cbo_id') }}</strong>
+                            </span>
+                            @endif
                         </div>
+
+
 
                         <label for="tipo_id">Tipo</label>
                         <div class="form-group">
@@ -96,19 +139,33 @@
                                     @endforeach
                                 </select>
                             </div>
+                            @if ($errors->has('tipo_id'))
+                                <span class="invalid-feedback">
+                                <strong>{{ $errors->first('tipo_id') }}</strong>
+                            </span>
+                            @endif
                         </div>
+
+
 
                         <label for="vinculacao_id">Vinculação</label>
                         <div class="form-group">
                             <div class="form-line">
                                 <select class="form-control show-tick" id="vinculacao_id" data-live-search="true" name="vinculacao_id" required>
                                     <option disabled value="" selected>Selecione um Vínculo</option>
-                                    @foreach($tipos as $tipo)
-                                        <option value="{{$tipo->id}}">{!!$tipo->descricao!!}</option>
+                                    @foreach($vinculacoes as $vinculo)
+                                        <option value="{{$vinculo->id}}">{!!$vinculo->descricao!!}</option>
                                     @endforeach
                                 </select>
                             </div>
+                            @if ($errors->has('vinculacao_id'))
+                                <span class="invalid-feedback">
+                                <strong>{{ $errors->first('vinculacao_id') }}</strong>
+                            </span>
+                            @endif
                         </div>
+
+
 
                         <button type="submit" class="btn btn-primary m-t-15 waves-effect">CADASTRAR</button>
 

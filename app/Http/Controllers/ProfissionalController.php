@@ -59,12 +59,20 @@ class ProfissionalController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nome' => 'required|string'
+            'nome' => 'required|string',
+            'cns' => 'required|integer',
+            'data_atribuicao' => 'required|date',
+            'carga_horaria' => 'required|integer',
+            'cbo_id' => 'required|integer',
+            'tipo_id' => 'required|integer',
+            'vinculacao_id' => 'required|integer',
+            'sus' => 'required'
         ]);
 
         $url = $this->api->rota('profissionais/store');
+
         (new Client())->request('POST', $url, ['json' => $request->all()])->getBody()->getContents();
-        return redirect()->route('index');
+        return redirect(url('/profissionais'));
     }
 
     /**
