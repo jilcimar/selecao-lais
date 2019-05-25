@@ -39,8 +39,8 @@ class ProfissionaisController extends Controller
     public function store(Request $request)
     {
         $dados = collect(json_decode($request->getContent()));
-        Profissional::create($dados->all()); //Salvando o Profissional
-        return response()->json('Farmaco criado com sucesso.');
+        Profissional::create($dados->all()); //Salvando o Profissional via API
+        return response()->json('Profissional criado com sucesso.');
     }
 
     /**

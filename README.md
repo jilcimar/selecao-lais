@@ -81,4 +81,8 @@ Para acessar o sistema use as seguintes credenciais:
 Também é possível fazer login usando uma conta do Google através da
 autenticação oauth disponível no sistema! 
 
+Obs.: Autenticação com o Google só irá funcionar se o projeto estiver 
+rodando locamente na porta :8000 como especificado acima (Foi o redirect setado na API do Google, pois não foi 
+repassado o domínio o qual aplicação iria rodar). 
+
 ##### JIlcimar da Silva Fernandes :)

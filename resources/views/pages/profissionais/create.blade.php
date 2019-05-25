@@ -79,11 +79,9 @@
                             <div class="form-line">
                                 <select class="form-control show-tick" id="cbo" data-live-search="true" name="cbo" required>
                                     <option disabled value="" selected>Selecione um CBO</option>
-                                    <option  value="1">CBO 1 - FAKE</option>
-                                    <option  value="2">CBO 2 - FAKE</option>
-                                    {{--@foreach($cbos as $cbo)--}}
-                                        {{--<option value="{{$cbo->id}}">{!!$cbo->descricao!!}</option>--}}
-                                    {{--@endforeach--}}
+                                    @foreach($cbos as $cbo)
+                                        <option value="{{$cbo->id}}">{!! $cbo->codigo  !!} - {!!$cbo->descricao!!}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -93,11 +91,9 @@
                             <div class="form-line">
                                 <select class="form-control show-tick" id="tipo_id" data-live-search="true" name="tipo_id" required>
                                     <option disabled value="" selected>Selecione um Tipo</option>
-                                    <option  value="1">TIPO 1 - FAKE</option>
-                                    <option  value="2">TIPO 2 - FAKE</option>
-                                    {{--@foreach($tipos as $tipo)--}}
-                                    {{--<option value="{{$tipo->id}}">{!!$tipo->descricao!!}</option>--}}
-                                    {{--@endforeach--}}
+                                    @foreach($tipos as $tipo)
+                                        <option value="{{$tipo->id}}"> {!!$tipo->descricao!!}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -107,11 +103,9 @@
                             <div class="form-line">
                                 <select class="form-control show-tick" id="vinculacao_id" data-live-search="true" name="vinculacao_id" required>
                                     <option disabled value="" selected>Selecione um Vínculo</option>
-                                    <option  value="1">VINCULO 1 - FAKE</option>
-                                    <option  value="2">VINCULO 2 - FAKE</option>
-                                    {{--@foreach($tipos as $tipo)--}}
-                                    {{--<option value="{{$tipo->id}}">{!!$tipo->descricao!!}</option>--}}
-                                    {{--@endforeach--}}
+                                    @foreach($tipos as $tipo)
+                                        <option value="{{$tipo->id}}">{!!$tipo->descricao!!}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
