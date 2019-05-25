@@ -78,6 +78,7 @@ Para acessar o sistema use as seguintes credenciais:
 - Login: admin@gmail.com
 - Senha: 123456
 
-
+Também é possível fazer login usando uma conta do Google através da
+autenticação oauth disponível no sistema! 
 
 ##### JIlcimar da Silva Fernandes :)
