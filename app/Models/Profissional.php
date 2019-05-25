@@ -8,6 +8,8 @@ class Profissional extends Model
 {
     protected $table = 'profissionais';
 
+    protected $dates = ['data_atribuicao'];
+
     protected $fillable = ['nome','cns','data_atribuicao','carga_horaria','sus','cbo_id','tipo_id','vinculacao_id'];
 
 

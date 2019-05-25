@@ -15,7 +15,7 @@ class ProfissionaisController extends Controller
      */
     public function index()
     {
-        $profissionais = Profissional::all();
+        $profissionais = Profissional::with('cbo','tipo','vinculacao')->get();
         return response()->json(array_merge($profissionais->toArray()));
     }
 

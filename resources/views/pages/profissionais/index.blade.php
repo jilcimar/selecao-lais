@@ -19,24 +19,32 @@
                             <thead>
                             <tr>
                                 <th>Nome</th>
-                                <th>E-mail</th>
-                                <th>Perfil</th>
-                                <th>Data de cadastro</th>
+                                <th>CNS</th>
+                                <th>Data de atribuição</th>
+                                <th>Carga Horária</th>
+                                <th>SUS</th>
+                                <th>CBO</th>
+                                <th>Tipo</th>
+                                <th>Vinculação</th>
                                 <th>Ações</th>
                             </tr>
                             </thead>
-                            <tfoot>
-                            <tr>
-                                <th>Nome</th>
-                                <th>E-mail</th>
-                                <th>Perfil</th>
-                                <th>Data de cadastro</th>
-                                <th>Ações</th>
-                            </tr>
-                            </tfoot>
                             <tbody>
-                                <tr>
-                                </tr>
+                                @forelse($profissionais as $profissional)
+                                    <tr>
+                                        <td>{{$profissional['nome']}}</td>
+                                        <td>{{$profissional['cns']}}</td>
+                                        <td>{{\Carbon\Carbon::parse($profissional['data_atribuicao'])->format('d/m/Y')}}</td>
+                                        <td>{{$profissional['carga_horaria']}}</td>
+                                        <td>{{$profissional['sus']}}</td>
+                                        <td>{{$profissional['cbo']['codigo']}}</td>
+                                        <td>{{$profissional['tipo']['descricao']}}</td>
+                                        <td>{{$profissional['vinculacao']['descricao']}}</td>
+                                        <td>-</td>
+                                @empty
+                                        <td>Sem itens</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
