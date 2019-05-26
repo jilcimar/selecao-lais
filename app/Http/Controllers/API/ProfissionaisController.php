@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Models\Cbo;
 use App\Models\Profissional;
+use App\Models\Tipo;
+use App\Models\Vinculacao;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -51,7 +54,8 @@ class ProfissionaisController extends Controller
      */
     public function show($id)
     {
-        //
+        $profissional = Profissional::with('cbo','tipo','vinculacao')->where('id', $id)->get();
+        return response()->json(array_merge($profissional->toArray()));
     }
 
     /**
@@ -93,5 +97,23 @@ class ProfissionaisController extends Controller
 
         return response()->json('Deletado com Sucesso');
 
+    }
+
+    public function cbo ()
+    {
+        $cbo = Cbo::all();
+        return response()->json(array_merge($cbo->toArray()));
+    }
+
+    public function tipo ()
+    {
+        $tipo = Tipo::all();
+        return response()->json(array_merge($tipo->toArray()));
+    }
+
+    public function vinculo ()
+    {
+        $vinculo = Vinculacao::all();
+        return response()->json(array_merge($vinculo->toArray()));
     }
 }

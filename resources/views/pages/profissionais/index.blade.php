@@ -50,7 +50,7 @@
                                         <td>{{$profissional['tipo']['descricao']}}</td>
                                         <td>{{$profissional['vinculacao']['descricao']}}</td>
                                         <td>
-                                            <a class='linkbtn' href="#"
+                                            <a class='linkbtn' href="{{route('profissionais.edit', ['id'=> $profissional['id']])}}"
                                                title="Editar Profissional">
                                                 <i class="material-icons">edit</i>
                                             </a>

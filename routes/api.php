@@ -52,6 +52,26 @@ Route::group(array('prefix' => 'v0'), function(){
         Route::get('tipo', 'API\IndicadorController@tipo');
     });
 
+    /*
+   |--------------------------------------------------------------------------
+   | Tipo
+   |--------------------------------------------------------------------------
+   */
+    Route::get('tipo', 'API\ProfissionaisController@tipo');
+
+    /*
+    |--------------------------------------------------------------------------
+    | Vinculo
+    |--------------------------------------------------------------------------
+    */
+    Route::get('vinculo', 'API\ProfissionaisController@vinculo');
+
+    /*
+    |--------------------------------------------------------------------------
+    | CBO
+    |--------------------------------------------------------------------------
+    */
+    Route::get('cbo', 'API\ProfissionaisController@cbo');
 
 
 //    Route::resource('profissionais','API\ProfissionaisController');

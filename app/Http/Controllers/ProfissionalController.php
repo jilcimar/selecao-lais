@@ -94,7 +94,26 @@ class ProfissionalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $url = $this->api->rota('profissionais/show/'.$id);
+        $request = $this->client->get($url);
+        $response = $request->getBody()->getContents();
+        $profissional = json_decode($response, true)[0];
+
+        $request = $this->client->get($this->api->rota('cbo'));
+        $response = $request->getBody()->getContents();
+        $cbos = json_decode($response, true);
+
+        $request = $this->client->get($this->api->rota('tipo'));
+        $response = $request->getBody()->getContents();
+        $tipos = json_decode($response, true);
+
+        $request = $this->client->get($this->api->rota('vinculo'));
+        $response = $request->getBody()->getContents();
+        $vinculos = json_decode($response, true);
+
+
+        return view('pages.profissionais.edit', compact('profissional','cbos','tipos','vinculos'));
+
     }
 
     /**
