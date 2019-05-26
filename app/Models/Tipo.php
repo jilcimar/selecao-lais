@@ -10,4 +10,9 @@ class Tipo extends Model
 
     protected $fillable = ['descricao'];
 
+    public function profissionais()
+    {
+        return $this->hasMany(Profissional::class);
+    }
+
 }
