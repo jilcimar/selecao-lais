@@ -12,6 +12,13 @@
                     <h2>
                         LISTAGEM DE TODOS OS PROFISSIONAIS DO SISTEMA
                     </h2>
+                    <h2>
+                        <div class="pull-right">
+                            <input type="checkbox" id="selecionar_todos">
+                            <label for="selecionar_todos">Marcar Todos para Deletar</label>
+                            <button class="btn btn-primary">Deletar</button>
+                        </div>
+                    </h2>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -26,7 +33,9 @@
                                 <th>CBO</th>
                                 <th>Tipo</th>
                                 <th>Vinculação</th>
-                                <th>Ações</th>
+                                <th>
+                                    Ações
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -40,7 +49,20 @@
                                         <td>{{$profissional['cbo']['codigo']}}</td>
                                         <td>{{$profissional['tipo']['descricao']}}</td>
                                         <td>{{$profissional['vinculacao']['descricao']}}</td>
-                                        <td>-</td>
+                                        <td>
+                                            <a class='linkbtn' href="#"
+                                               title="Editar Profissional">
+                                                <i class="material-icons">edit</i>
+                                            </a>
+
+                                            <a class='linkbtn btn-delete' data-link="#"
+                                               title="Deletar">
+                                                <i class="material-icons">delete</i>
+                                            </a>
+                                            <input type="checkbox" id="{{$profissional['id']}}">
+                                            <label for="{{$profissional['id']}}"></label>
+
+                                        </td>
                                 @empty
                                         <td>Sem itens</td>
                                     </tr>
