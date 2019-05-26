@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profissional;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,6 +27,10 @@ class HomeController extends Controller
     public function index()
     {
 //        return response()->json(['name'=> Auth::user()->tokenSecret]);
-        return view('index');
+
+
+        $usuarios = count(User::all());
+        $profissionais = count(Profissional::all());
+        return view('index' ,compact('usuarios','profissionais'));
     }
 }
