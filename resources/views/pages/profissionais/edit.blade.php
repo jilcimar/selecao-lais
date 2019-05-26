@@ -37,8 +37,10 @@
                     </h2>
                 </div>
                 <div class="body">
-                    <form class="form-material" action="{{route('profissionais.update' , ['id'=>$profissional['id']]) }}" method="POST" enctype="multipart/form-data">
+                    <form class="form-material" action="{{route('profissionais.update' , ['id'=>$profissional['id']]) }}" method="POST">
                         @csrf
+                        @method('put')
+
                         <label for="nome">Nome</label>
                         <div class="form-group">
                             <div class="form-line">
@@ -165,7 +167,6 @@
                             </span>
                             @endif
                         </div>
-
 
                         <button type="submit" class="btn btn-primary m-t-15 waves-effect">ATUALIZAR</button>
 

@@ -81,7 +81,7 @@ class ProfissionaisController extends Controller
         $dados = collect(json_decode($request->getContent()));
         $profissional = Profissional::find($id);
         $profissional->update($dados->all()); //Atualizando o Profissional
-        return response()->json('Farmaco atualizado com sucesso.');
+        return response()->json('Profissional atualizado com sucesso.');
     }
 
     /**

@@ -6,6 +6,7 @@ use App\Api;
 use App\Models\Cbo;
 use App\Models\Tipo;
 use App\Models\Vinculacao;
+use Carbon\Carbon;
 use \GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
@@ -125,7 +126,23 @@ class ProfissionalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->merge(['data_atribuicao' => Carbon::createFromFormat('d/m/Y', $request->data_atribuicao)->format('Y-m-d')]);
+
+        $this->validate($request, [
+            'nome' => 'required|string',
+            'cns' => 'required|integer',
+            'data_atribuicao' => 'required|date',
+            'carga_horaria' => 'required|integer',
+            'cbo_id' => 'required|integer',
+            'tipo_id' => 'required|integer',
+            'vinculacao_id' => 'required|integer',
+            'sus' => 'required'
+        ]);
+
+        $url = $this->api->rota('profissionais/update/'.$id);
+
+        (new Client())->request('POST', $url, ['json' => $request->all()])->getBody()->getContents();
+        return redirect(url('/profissionais'));
     }
 
     /**
