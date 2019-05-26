@@ -32,29 +32,7 @@ class HomeController extends Controller
         $profissionais = count(Profissional::all());
 
 
-        $tipos_profissionais = [];
-        $vinculos_profissionais = [];
 
-
-        foreach (Tipo::all() as $tipo)
-        {
-            $obj = array(
-                "y" => (count($tipo->profissionais)/$profissionais)*100,
-                "label" => $tipo->descricao,
-            );
-            array_push($tipos_profissionais, $obj);
-        }
-
-        foreach (Vinculacao::all() as $vinculacao)
-        {
-            $obj = array(
-                "y" => count($vinculacao->profissionais),
-                "label" => $vinculacao->descricao,
-            );
-            array_push($vinculos_profissionais, $obj);
-        }
-
-
-        return view('index' ,compact('usuarios','profissionais', 'tipos_profissionais' ,'vinculos_profissionais'));
+        return view('index' ,compact('usuarios','profissionais'));
     }
 }

@@ -42,6 +42,17 @@ Route::group(array('prefix' => 'v0'), function(){
         Route::get('show/{id}', 'API\ProfissionaisController@show');
     });
 
+    /*
+    |--------------------------------------------------------------------------
+    | Indicadores
+    |--------------------------------------------------------------------------
+    */
+    Route::group(array('prefix' => 'indicadores'), function(){
+        Route::get('vinculo', 'API\IndicadorController@vinculo_empregaticio');
+        Route::get('tipo', 'API\IndicadorController@tipo');
+    });
+
+
 
 //    Route::resource('profissionais','API\ProfissionaisController');
 

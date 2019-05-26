@@ -56,7 +56,7 @@
 
     <script>
         window.onload = function() {
-            var dados_profissionais = {!! json_encode($tipos_profissionais) !!};
+            var dataPoints = [];
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
                 title: {},
@@ -65,14 +65,29 @@
                     startAngle: 240,
                     yValueFormatString: "##0.00\"%\"",
                     indexLabel: "{label} {y}",
-                    dataPoints:dados_profissionais
+                    dataPoints:dataPoints
+
                 }]
             });
-            chart.render();
 
-            var vinculo_profissionais = {!! json_encode($vinculos_profissionais) !!};
+            function addData(data) {
+                for (var i = 0; i < data.length; i++) {
+                    dataPoints.push({
+                        y: data[i].y,
+                        label: data[i].label,
+                    });
+                }
+                console.log(dataPoints);
 
-            var chart = new CanvasJS.Chart("chartContainer2", {
+                chart.render();
+            }
+
+            $.getJSON("http://localhost:9000/api/v0/indicadores/tipo", addData);
+
+
+            var dataPointsVinculo = [];
+
+            var chart2 = new CanvasJS.Chart("chartContainer2", {
                 animationEnabled: true,
                 theme: "light1", // "light1", "light2", "dark1", "dark2"
                 title: {},
@@ -83,10 +98,22 @@
                     type: "column",
                     showInLegend: false,
                     legendMarkerColor: "grey",
-                    dataPoints:vinculo_profissionais
+                    dataPoints:dataPointsVinculo
                 }]
             });
-            chart.render();
+
+            function addDataVinculo(data) {
+                for (var i = 0; i < data.length; i++) {
+                    dataPointsVinculo.push({
+                        y: data[i].y,
+                        label: data[i].label,
+                    });
+                }
+                console.log(dataPointsVinculo);
+                chart2.render();
+            }
+
+            $.getJSON("http://localhost:9000/api/v0/indicadores/vinculo", addDataVinculo);
         }
     </script>
 
