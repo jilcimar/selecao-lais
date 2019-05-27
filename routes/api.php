@@ -38,7 +38,7 @@ Route::group(array('prefix' => 'v0'), function(){
         Route::post('store', 'API\ProfissionaisController@store')->name('api_store');
         Route::put('update/{id}', 'API\ProfissionaisController@update');
         Route::get('/', 'API\ProfissionaisController@index');
-        Route::get('destroy/{id}', 'API\ProfissionaisController@destroy');
+        Route::get('destroy/{id}', 'API\ProfissionaisController@destroy')->name('api_destroy');
         Route::get('show/{id}', 'API\ProfissionaisController@show');
     });
 

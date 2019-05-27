@@ -55,10 +55,11 @@
                                                 <i class="material-icons">edit</i>
                                             </a>
 
-                                            <a class='linkbtn btn-delete' data-link="#"
-                                               title="Deletar">
+                                            <a title="Deletar Profissional" class="waves-effect waves-block destroy_profissional" data-profissional="{{$profissional['id']}}" type="submit">
                                                 <i class="material-icons">delete</i>
                                             </a>
+                                            {!! Form::open(['id' => 'form-delete-profissional-' . $profissional['id'], 'route' => array('profissionais.destroy', $profissional['id']), 'method' => 'DELETE']) !!}
+                                            {!! Form::close() !!}
                                             <input type="checkbox" id="{{$profissional['id']}}">
                                             <label for="{{$profissional['id']}}"></label>
 
@@ -77,6 +78,29 @@
 @endsection
 
 @section('footer-extra')
+    <script>
+        $('.destroy_profissional').click(function (e) {
+            e.preventDefault();
+            let id = $(this).data('profissional');
+            let $form = $('#form-delete-profissional-' + id);
+            swal({
+                    title: "Excluír Profissional?",
+                    text: "Você tem certeza que deseja excluir esse profissional? não será possível recuperar os dados!",
+                    icon: "warning",
+                    dangerMode: true,
+                    closeOnConfirm: false,
+                    closeOnCancel: true,
+                    buttons: ["Não, cancele", "Sim, delete!"],
+                }) .then((willDelete) => {
+                if (willDelete) {
+                    $form.submit();
+
+                }
+            });
+
+        });
+    </script>
+
     <!-- Jquery DataTable Plugin Js -->
     <script src="{{ asset('plugins/jquery-datatable/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>

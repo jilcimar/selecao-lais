@@ -93,10 +93,9 @@ class ProfissionaisController extends Controller
     public function destroy($id)
     {
         $profissional = Profissional::find($id);
-        $profissional->delete(); //Deletando o farmaco
+        $profissional->delete(); //Deletando o profissional
 
         return response()->json('Deletado com Sucesso');
-
     }
 
     public function cbo ()
