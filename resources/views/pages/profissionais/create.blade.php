@@ -34,7 +34,7 @@
                     </h2>
                 </div>
                 <div class="body">
-                    <form class="form-material" id="form_cadastro_profissional"  action="{{route('api_store')}}" method="POST" enctype="multipart/form-data">
+                    <form class="form-material" id="form_cadastro_profissional"  action="{{route('profissionais.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <label for="nome">Nome</label>
