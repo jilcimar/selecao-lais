@@ -73,6 +73,10 @@ class ProfissionalController extends Controller
         $url = $this->api->rota('profissionais/store');
 
         (new Client())->request('POST', $url, ['json' => $request->all()])->getBody()->getContents();
+
+        alert()->success('Profissional cadastrado com sucesso',
+            'Profissional cadastrado')->autoclose(5500);
+
         return redirect(url('/profissionais'));
     }
 
@@ -142,6 +146,10 @@ class ProfissionalController extends Controller
         $url = $this->api->rota('profissionais/update/'.$id);
 
         (new Client())->request('POST', $url, ['json' => $request->all()])->getBody()->getContents();
+
+        alert()->success('Profissional atualizado com sucesso',
+            'Profissional atualizado')->autoclose(5500);
+
         return redirect(url('/profissionais'));
     }
 
