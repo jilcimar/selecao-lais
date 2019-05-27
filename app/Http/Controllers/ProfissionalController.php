@@ -155,6 +155,9 @@ class ProfissionalController extends Controller
     {
         $this->client->get($this->api->rota('profissionais/destroy/'.$id));
 
+        alert()->success('Profissional deletado com sucesso',
+            'Profissional deletado')->autoclose(5500);
+
         return redirect(url('/profissionais'));
     }
 }

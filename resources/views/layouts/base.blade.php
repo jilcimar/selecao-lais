@@ -23,5 +23,8 @@
 
     @include('layouts.includes.footer')
 
+    @include('sweet::alert')
+
+
 </body>
 </html>

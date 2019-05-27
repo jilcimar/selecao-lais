@@ -20,9 +20,8 @@
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0",
+        "sweetalert": "^2.1.2",
         "vue": "^2.5.17"
     },
-    "dependencies": {
-        "sweetalert": "^2.1.2"
-    }
+    "dependencies": {}
 }
