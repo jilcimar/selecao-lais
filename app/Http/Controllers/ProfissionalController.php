@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Api;
 use App\Models\Cbo;
+use App\Models\Profissional;
 use App\Models\Tipo;
 use App\Models\Vinculacao;
 use Carbon\Carbon;
@@ -29,10 +30,12 @@ class ProfissionalController extends Controller
      */
     public function index()
     {
-        $url = $this->api->rota('profissionais');
-        $request = $this->client->get($url);
-        $response = $request->getBody()->getContents();
-        $profissionais = json_decode($response, true);
+//        $url = $this->api->rota('profissionais');
+//        $request = $this->client->get($url);
+//        $response = $request->getBody()->getContents();
+//        $profissionais = json_decode($response, true);
+
+        $profissionais = Profissional::with('cbo','tipo','vinculacao')->get();
 
         return view('pages.profissionais.index', compact('profissionais'));
     }
@@ -71,9 +74,10 @@ class ProfissionalController extends Controller
             'sus' => 'required'
         ]);
 
-        $url = $this->api->rota('profissionais/store');
+        Profissional::create($request->all());
 
-        (new Client())->request('POST', $url, ['json' => $request->all()])->getBody()->getContents();
+//        $url = $this->api->rota('profissionais/store');
+//        (new Client())->request('POST', $url, ['json' => $request->all()])->getBody()->getContents();
 
         alert()->success('Profissional cadastrado com sucesso',
             'Profissional cadastrado')->autoclose(5500);
@@ -100,23 +104,11 @@ class ProfissionalController extends Controller
      */
     public function edit($id)
     {
-        $url = $this->api->rota('profissionais/show/'.$id);
-        $request = $this->client->get($url);
-        $response = $request->getBody()->getContents();
-        $profissional = json_decode($response, true)[0];
+        $cbos = Cbo::all();
+        $tipos = Tipo::all();
+        $vinculos = Vinculacao::all();
 
-        $request = $this->client->get($this->api->rota('cbo'));
-        $response = $request->getBody()->getContents();
-        $cbos = json_decode($response, true);
-
-        $request = $this->client->get($this->api->rota('tipo'));
-        $response = $request->getBody()->getContents();
-        $tipos = json_decode($response, true);
-
-        $request = $this->client->get($this->api->rota('vinculo'));
-        $response = $request->getBody()->getContents();
-        $vinculos = json_decode($response, true);
-
+        $profissional = Profissional::find($id)->with('cbo','tipo','vinculacao')->get();
 
         return view('pages.profissionais.edit', compact('profissional','cbos','tipos','vinculos'));
 
@@ -144,10 +136,12 @@ class ProfissionalController extends Controller
             'sus' => 'required'
         ]);
 
-        $url = $this->api->rota('profissionais/update/'.$id);
+//        $url = $this->api->rota('profissionais/update/'.$id);
+//
+//        (new Client())->request('POST', $url, ['json' => $request->all()])->getBody()->getContents();
 
-        (new Client())->request('POST', $url, ['json' => $request->all()])->getBody()->getContents();
 
+        Profissional::update($request->all());
         alert()->success('Profissional atualizado com sucesso',
             'Profissional atualizado')->autoclose(5500);
 
@@ -162,7 +156,9 @@ class ProfissionalController extends Controller
      */
     public function destroy($id)
     {
-        $this->client->get($this->api->rota('profissionais/destroy/'.$id));
+//        $this->client->get($this->api->rota('profissionais/destroy/'.$id));
+        $profissional = Profissional::find($id);
+        $profissional->delete();
 
         alert()->success('Profissional deletado com sucesso',
             'Profissional deletado')->autoclose(5500);

@@ -53,18 +53,14 @@ padrões do projeto.
 $ php artisan key:generate
 ```
 
-Além disso, ainda no no `.env`. é preciso colocar a URL da API no parâmetro `API_URL` , iremos colocar
-localmente mas em uma porta diferente da que vai rodar o sistema (O sistema irá rodar na `:8000`) e a API 
-na `:9000` por exemplo:
+Além disso, ainda no no `.env`. é preciso colocar a URL da API no parâmetro `API_URL` ,por exemplo:
 
  ```bash 
-API_URL=http://localhost:9000
+API_URL=http://localhost:8000
 ```
-Para executar a API localmente nessa porta, execute o seguinte comando:
+Se o parâmetro não for informado, o sistema usará como padrão `http://localhost:8000`
 
- ```bash 
-$ php artisan serve --port=9000
-```
+
 
 ## Executar o projeto
 
