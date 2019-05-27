@@ -108,7 +108,7 @@ class ProfissionalController extends Controller
         $tipos = Tipo::all();
         $vinculos = Vinculacao::all();
 
-        $profissional = Profissional::find($id)->with('cbo','tipo','vinculacao')->get();
+        $profissional = Profissional::find($id);
 
         return view('pages.profissionais.edit', compact('profissional','cbos','tipos','vinculos'));
 
@@ -137,11 +137,10 @@ class ProfissionalController extends Controller
         ]);
 
 //        $url = $this->api->rota('profissionais/update/'.$id);
-//
 //        (new Client())->request('POST', $url, ['json' => $request->all()])->getBody()->getContents();
+        $profissional = Profissional::find($id);
+        $profissional->update($request->all());
 
-
-        Profissional::update($request->all());
         alert()->success('Profissional atualizado com sucesso',
             'Profissional atualizado')->autoclose(5500);
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Api;
 use App\Models\Profissional;
 use App\Models\Tipo;
 use App\Models\Vinculacao;
@@ -16,9 +17,14 @@ class HomeController extends Controller
      *
      * @return void
      */
+
+    protected  $api;
+
     public function __construct()
     {
         $this->middleware('auth');
+        $this->api = new Api();
+
     }
 
     /**
@@ -31,8 +37,8 @@ class HomeController extends Controller
         $usuarios = count(User::all());
         $profissionais = count(Profissional::all());
 
-        $url_api_tipo = env('API_URL', 'http://localhost:9000').'/api/v0/indicadores/tipo';
-        $url_api_vinculo = env('API_URL', 'http://localhost:9000').'/api/v0/indicadores/vinculo';
+        $url_api_tipo = $this->api->rota('indicadores/tipo');
+        $url_api_vinculo = $this->api->rota('indicadores/vinculo');
 
         return view('index' ,compact('usuarios','profissionais', 'url_api_vinculo','url_api_tipo'));
     }

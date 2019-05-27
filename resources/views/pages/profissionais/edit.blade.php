@@ -37,14 +37,14 @@
                     </h2>
                 </div>
                 <div class="body">
-                    <form class="form-material" action="{{route('profissionais.update' , ['id'=>$profissional['id']]) }}" method="POST">
+                    <form class="form-material" action="{{route('profissionais.update' , ['id'=>$profissional->id]) }}" method="POST">
                         @csrf
                         @method('put')
 
                         <label for="nome">Nome</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" id="nome" value="{{$profissional['nome']}}" name="nome" class="form-control" placeholder="Digite o nome do profissionao" required>
+                                <input type="text" id="nome" value="{{$profissional->nome}}" name="nome" class="form-control" placeholder="Digite o nome do profissionao" required>
                             </div>
                             @if ($errors->has('nome'))
                                 <span class="invalid-feedback">
@@ -57,7 +57,7 @@
                         <label for="cns">CNS</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="number" value="{{$profissional['cns']}}" id="cns" name="cns" class="form-control" placeholder="Digite o número CNS" required>
+                                <input type="number" value="{{$profissional->cns}}" id="cns" name="cns" class="form-control" placeholder="Digite o número CNS" required>
                             </div>
                             @if ($errors->has('cns'))
                                 <span class="invalid-feedback">
@@ -70,7 +70,7 @@
                         <label for="data_atribuicao">Data de Atribuição</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" value="{{\Carbon\Carbon::parse($profissional['data_atribuicao'])->format('d/m/Y')}}"
+                                <input type="text" value="{{$profissional->data_atribuicao->format('d/m/Y')}}"
                                        id="data_atribuicao" name="data_atribuicao" class="form-control date" OnKeyPress="format('##/##/####', this)" maxlength="10"
                                         required>
                             </div>
@@ -85,7 +85,7 @@
                         <label for="data_atribuicao">CH</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="number" value="{{$profissional['carga_horaria']}}" id="carga_horaria" name="carga_horaria" class="form-control" placeholder="Digite a Carga Horária" required>
+                                <input type="number" value="{{$profissional->carga_horaria}}" id="carga_horaria" name="carga_horaria" class="form-control" placeholder="Digite a Carga Horária" required>
                             </div>
                             @if ($errors->has('carga_horaria'))
                                 <span class="invalid-feedback">
@@ -99,10 +99,10 @@
                         <div class="form-group">
                             <div class="form-line">
                                 <div class="switch">
-                                    <input name="sus" value="1" type="radio" id="sim" {{$profissional['sus']==1?'checked':''}}>
+                                    <input name="sus" value="1" type="radio" id="sim" {{$profissional->sus==1?'checked':''}}>
                                     <label for="sim">SIM</label>
                                     <br>
-                                    <input name="sus" value="0" type="radio" id="nao" {{$profissional['sus']==2?'checked':''}}>
+                                    <input name="sus" value="0" type="radio" id="nao" {{$profissional->sus==2?'checked':''}}>
                                     <label for="nao">NÃO</label>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@
                                 <select class="form-control show-tick" id="cbo_id"  data-live-search="true" name="cbo_id" required>
                                     <option disabled value="" selected>Selecione um CBO</option>
                                     @foreach($cbos as $cbo)
-                                        <option value="{{$cbo['id']}}" {{$cbo['id']==$profissional['cbo_id']?'selected':''}}>{!! $cbo['codigo']!!} - {!!$cbo['descricao']!!}</option>
+                                        <option value="{{$cbo->id}}" {{$cbo->id==$profissional->cbo_id?'selected':''}}>{!! $cbo['codigo']!!} - {!!$cbo['descricao']!!}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -139,7 +139,7 @@
                                 <select class="form-control show-tick" id="tipo_id" data-live-search="true" name="tipo_id" required>
                                     <option disabled value="" selected>Selecione um Tipo</option>
                                     @foreach($tipos as $tipo)
-                                        <option value="{{$tipo['id']}}"  {{$tipo['id']==$profissional['tipo_id']?'selected':''}}> {!!$tipo['descricao']!!}</option>
+                                        <option value="{{$tipo->id}}"  {{$tipo->id==$profissional->tipo_id?'selected':''}}> {!!$tipo['descricao']!!}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -157,7 +157,7 @@
                                 <select class="form-control show-tick" id="vinculacao_id" data-live-search="true" name="vinculacao_id" required>
                                     <option disabled value="" selected>Selecione um Vínculo</option>
                                     @foreach($vinculos as $vinculo)
-                                        <option value="{{$vinculo['id']}}" {{$vinculo['id']==$profissional['vinculacao_id']?'selected':''}}>{!!$vinculo['descricao']!!}</option>
+                                        <option value="{{$vinculo->id}}" {{$vinculo->id==$profissional->vinculacao_id?'selected':''}}>{!!$vinculo['descricao']!!}</option>
                                     @endforeach
                                 </select>
                             </div>
