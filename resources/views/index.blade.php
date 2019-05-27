@@ -82,11 +82,10 @@
                 chart.render();
             }
 
-            $.getJSON("http://localhost:9000/api/v0/indicadores/tipo", addData);
+            $.getJSON("{{$url_api_tipo}}", addData);
 
 
             var dataPointsVinculo = [];
-
             var chart2 = new CanvasJS.Chart("chartContainer2", {
                 animationEnabled: true,
                 theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -112,8 +111,7 @@
                 console.log(dataPointsVinculo);
                 chart2.render();
             }
-
-            $.getJSON("http://localhost:9000/api/v0/indicadores/vinculo", addDataVinculo);
+            $.getJSON("{{$url_api_vinculo}}", addDataVinculo);
         }
     </script>
 

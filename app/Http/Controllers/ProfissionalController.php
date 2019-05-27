@@ -34,7 +34,9 @@ class ProfissionalController extends Controller
         $response = $request->getBody()->getContents();
         $profissionais = json_decode($response, true);
 
-        return view('pages.profissionais.index', compact('profissionais'));
+
+
+        return view('pages.profissionais.index', compact('profissionais','url_api_tipo','url_api_vinculo'));
     }
 
     /**

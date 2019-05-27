@@ -34,7 +34,7 @@
                     </h2>
                 </div>
                 <div class="body">
-                    <form class="form-material" action="{{route('profissionais.store') }}" method="POST" enctype="multipart/form-data">
+                    <form class="form-material" id="form_cadastro_profissional"  action="{{route('api_store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <label for="nome">Nome</label>
@@ -146,8 +146,6 @@
                             @endif
                         </div>
 
-
-
                         <label for="vinculacao_id">Vinculação</label>
                         <div class="form-group">
                             <div class="form-line">
@@ -166,8 +164,7 @@
                         </div>
 
 
-
-                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">CADASTRAR</button>
+                        <button id="cadastro_profissional" type="submit" class="btn btn-primary m-t-15 waves-effect">CADASTRAR</button>
 
                     </form>
                 </div>
@@ -177,7 +174,6 @@
 @endsection
 
 @section('footer-extra')
-
     <script src="{{ asset('js/pages/examples/sign-up.js') }}"></script>
 
     <script>

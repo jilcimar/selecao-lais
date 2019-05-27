@@ -31,8 +31,9 @@ class HomeController extends Controller
         $usuarios = count(User::all());
         $profissionais = count(Profissional::all());
 
+        $url_api_tipo = env('API_URL', 'http://localhost:9000').'/api/v0/indicadores/tipo';
+        $url_api_vinculo = env('API_URL', 'http://localhost:9000').'/api/v0/indicadores/vinculo';
 
-
-        return view('index' ,compact('usuarios','profissionais'));
+        return view('index' ,compact('usuarios','profissionais', 'url_api_vinculo','url_api_tipo'));
     }
 }

@@ -35,7 +35,7 @@ Route::group(array('prefix' => 'v0'), function(){
     |--------------------------------------------------------------------------
     */
     Route::group(array('prefix' => 'profissionais'), function(){
-        Route::post('store', 'API\ProfissionaisController@store');
+        Route::post('store', 'API\ProfissionaisController@store')->name('api_store');
         Route::put('update/{id}', 'API\ProfissionaisController@update');
         Route::get('/', 'API\ProfissionaisController@index');
         Route::get('destroy/{id}', 'API\ProfissionaisController@destroy');
@@ -48,8 +48,8 @@ Route::group(array('prefix' => 'v0'), function(){
     |--------------------------------------------------------------------------
     */
     Route::group(array('prefix' => 'indicadores'), function(){
-        Route::get('vinculo', 'API\IndicadorController@vinculo_empregaticio');
-        Route::get('tipo', 'API\IndicadorController@tipo');
+        Route::get('vinculo', 'API\IndicadorController@vinculo_empregaticio')->name('api_indicador_vinculo');
+        Route::get('tipo', 'API\IndicadorController@tipo')->name('api_indicador_tipo');
     });
 
     /*
