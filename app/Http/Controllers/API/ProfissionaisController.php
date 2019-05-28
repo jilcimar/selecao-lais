@@ -7,10 +7,11 @@ use App\Models\Profissional;
 use App\Models\Tipo;
 use App\Models\Vinculacao;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class ProfissionaisController extends Controller
+class ProfissionaisController extends BaseController
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -18,8 +19,14 @@ class ProfissionaisController extends Controller
      */
     public function index()
     {
+        $resposta = self::resposta;
+
         $profissionais = Profissional::with('cbo','tipo','vinculacao')->get();
-        return response()->json(array_merge($profissionais->toArray()));
+
+        $resposta['data'] = array_merge($resposta['data'],$profissionais->toArray());
+
+        return response()->json($resposta);
+
     }
 
 

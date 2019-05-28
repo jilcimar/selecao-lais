@@ -44,6 +44,10 @@
 .ls-closed section.content {
   margin-left: 15px; }
 
+a.linkbtn{
+  text-decoration: none;
+}
+
 .ls-closed .bars:after, .ls-closed .bars:before {
   font-family: 'Material Icons';
   font-size: 24px;

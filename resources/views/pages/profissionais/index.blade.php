@@ -11,30 +11,31 @@
                 <div class="header">
                     <h2>
                         LISTAGEM DE TODOS OS PROFISSIONAIS DO SISTEMA
-                    </h2>
-                    <h2>
-                        <div class="pull-right">
-                            <input type="checkbox" id="selecionar_todos">
-                            <label for="selecionar_todos">Marcar Todos para Deletar</label>
-                            <button class="btn btn-primary">Deletar</button>
-                        </div>
+                        <a class="btn btn-primary  pull-right enviar_selecionados" title="Deletar selecionados">
+                            DELETAR selecionados
+                        </a>
+
                     </h2>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable" id="tabela_profissionais">
+                        <table class="table  table-striped js-basic-example dataTable" id="tabela_profissionais">
                             <thead>
                             <tr>
                                 <th>Nome</th>
                                 <th>CNS</th>
                                 <th>Data de atribuição</th>
-                                <th>Carga Horária</th>
+                                <th>CH.</th>
                                 <th>SUS</th>
                                 <th>CBO</th>
                                 <th>Tipo</th>
                                 <th>Vinculação</th>
                                 <th>
                                     Ações
+                                </th>
+                                <th>
+                                    <input type="checkbox" class="selecionar_todos" id="selecionar_todos">
+                                    <label for="selecionar_todos" title="Deletar TODOS os selecionados">Todos</label>
                                 </th>
                             </tr>
                             </thead>
@@ -50,24 +51,33 @@
                                         <td>{{$profissional['tipo']['descricao']}}</td>
                                         <td>{{$profissional['vinculacao']['descricao']}}</td>
                                         <td>
-                                            <a class='linkbtn' href="{{route('profissionais.edit', ['id'=> $profissional['id']])}}"
-                                               title="Editar Profissional">
-                                                <i class="material-icons">edit</i>
-                                            </a>
+                                            <div class="table-options">
+                                                <a class='linkbtn' href="{{route('profissionais.edit', ['id'=> $profissional['id']])}}"
+                                                   title="Ver Profissional">
+                                                    <i class="material-icons">search</i>
+                                                </a>
 
-                                            <a title="Deletar Profissional" class="waves-effect waves-block destroy_profissional" data-profissional="{{$profissional['id']}}" type="submit">
-                                                <i class="material-icons">delete</i>
-                                            </a>
-                                            {!! Form::open(['id' => 'form-delete-profissional-' . $profissional['id'], 'route' => array('profissionais.destroy', $profissional['id']), 'method' => 'DELETE']) !!}
-                                            {!! Form::close() !!}
-                                            <input type="checkbox" id="{{$profissional['id']}}">
+                                                <a class='linkbtn' href="{{route('profissionais.edit', ['id'=> $profissional['id']])}}"
+                                                   title="Editar Profissional">
+                                                    <i class="material-icons">edit</i>
+                                                </a>
+
+                                                <a title="Deletar Profissional" class="waves-effect waves-block linkbtn destroy_profissional" data-profissional="{{$profissional['id']}}" type="submit">
+                                                    <i class="material-icons">delete</i>
+                                                </a>
+                                                {!! Form::open(['id' => 'form-delete-profissional-' . $profissional['id'], 'route' => array('profissionais.destroy', $profissional['id']), 'method' => 'DELETE']) !!}
+                                                {!! Form::close() !!}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" name="profissionais" value="{{$profissional['id']}}" id="{{$profissional['id']}}">
                                             <label for="{{$profissional['id']}}"></label>
-
                                         </td>
                                 @empty
-                                        <td>Sem itens</td>
+                                        <td colspan="10" style="text-align: center">Sem itens</td>
                                     </tr>
                                 @endforelse
+
                             </tbody>
                         </table>
                     </div>
@@ -78,7 +88,58 @@
 @endsection
 
 @section('footer-extra')
+
+    <script type="text/javascript">
+        $('.selecionar_todos').change(function () {
+            if ($(this).is(':checked')) {
+                $("INPUT[type='checkbox']").prop('checked', true);
+            }
+            else
+            {
+                $("INPUT[type='checkbox']").prop('checked', false);
+            }
+        });
+    </script>
+
     <script>
+        $('.enviar_selecionados').click(function (e) {
+
+            var arr = [];
+            $("input:checkbox[name=profissionais]:checked").each(function(){
+                arr.push($(this).val());
+            });
+
+            e.preventDefault();
+            if (arr.length>0)
+            {
+                swal({
+                    title: "Excluír Profissionais?",
+                    text: "Você tem certeza que deseja excluir os profissionais selecionados? não será possível recuperar os dados!",
+                    icon: "warning",
+                    dangerMode: true,
+                    closeModal: false,
+                    closeOnCancel: true,
+                    buttons: ["Não, cancele", "Sim, delete!"],
+                }) .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'profissionais/delete/all',
+                            data: {
+                                "_token": "{{ csrf_token() }}",
+                                "profissionais": arr,
+                            },
+                            success: function(data)
+                            {
+                                location.reload();
+                            }
+                        });
+                    }
+                });
+            }
+
+        });
+
         $('.destroy_profissional').click(function (e) {
             e.preventDefault();
             let id = $(this).data('profissional');
@@ -88,13 +149,12 @@
                     text: "Você tem certeza que deseja excluir esse profissional? não será possível recuperar os dados!",
                     icon: "warning",
                     dangerMode: true,
-                    closeOnConfirm: false,
+                    closeModal: false,
                     closeOnCancel: true,
                     buttons: ["Não, cancele", "Sim, delete!"],
                 }) .then((willDelete) => {
                 if (willDelete) {
                     $form.submit();
-
                 }
             });
 
