@@ -18,7 +18,7 @@
                     </h2>
                 </div>
                 <div class="body">
-                    <div class="table-responsive">
+                    <div class="table">
                         <table class="table  table-striped js-basic-example dataTable" id="tabela_profissionais">
                             <thead>
                             <tr>
@@ -62,11 +62,6 @@
                                                     <i class="material-icons">edit</i>
                                                 </a>
 
-                                                {{--<a title="Deletar Profissional" class="waves-effect waves-block linkbtn destroy_profissional" data-profissional="{{$profissional['id']}}" type="submit">--}}
-                                                    {{--<i class="material-icons">delete</i>--}}
-                                                {{--</a>--}}
-                                                {{--{!! Form::open(['id' => 'form-delete-profissional-' . $profissional['id'], 'route' => array('profissionais.destroy', $profissional['id']), 'method' => 'DELETE']) !!}--}}
-                                                {{--{!! Form::close() !!}--}}
                                             </div>
                                         </td>
                                         <td>
