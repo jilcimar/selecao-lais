@@ -164,17 +164,4 @@ class ProfissionalController extends Controller
 
         return redirect(url('/profissionais'));
     }
-
-    public function destroy_all(Request $request)
-    {
-        foreach ($request->profissionais as $id)
-        {
-            $profissional = Profissional::find($id);
-            $profissional->delete();
-
-        }
-
-        alert()->success('Profissional deletado com sucesso',
-            'Profissional deletado')->autoclose(5500);
-    }
 }

@@ -20,7 +20,6 @@ Route::group( ['middleware' => 'auth'], function()
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::resource('profissionais','ProfissionalController');
-    Route::post('profissionais/delete/all', 'ProfissionalController@destroy_all')->name('destroy_all');
 });
 
 /*
