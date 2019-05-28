@@ -31,16 +31,6 @@ class ProfissionaisController extends BaseController
 
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -51,6 +41,20 @@ class ProfissionaisController extends BaseController
         $dados = collect(json_decode($request->getContent()));
         Profissional::create($dados->all()); //Salvando o Profissional via API
         return response()->json('Profissional criado com sucesso.');
+    }
+
+    public function destroy_all(Request $request)
+    {
+        $dados = collect(json_decode($request->getContent()));
+
+        foreach ($dados['profissionais'] as $id)
+        {
+            $profissional = Profissional::find($id);
+            $profissional->delete();
+        }
+
+        return response()->json('Profissionais deletados com sucesso');
+
     }
 
     /**

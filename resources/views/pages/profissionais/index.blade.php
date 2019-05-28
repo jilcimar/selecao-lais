@@ -122,15 +122,15 @@
                     buttons: ["Não, cancele", "Sim, delete!"],
                 }) .then((willDelete) => {
                     if (willDelete) {
+                        console.log(arr);
                         $.ajax({
                             type: 'POST',
-                            url: 'profissionais/delete/all',
-                            data: {
-                                "_token": "{{ csrf_token() }}",
-                                "profissionais": arr,
-                            },
+                            contentType: 'application/json',
+                            url: 'api/v0/profissionais/delete/all',
+                            data: JSON.stringify({ profissionais: arr}),
                             success: function(data)
                             {
+                                console.log(data);
                                 location.reload();
                             }
                         });

@@ -40,6 +40,8 @@ Route::group(array('prefix' => 'v0'), function(){
         Route::get('/', 'API\ProfissionaisController@index')->name('api_index');
         Route::get('destroy/{id}', 'API\ProfissionaisController@destroy')->name('api_destroy');
         Route::get('show/{id}', 'API\ProfissionaisController@show');
+        Route::post('delete/all', 'API\ProfissionaisController@destroy_all')->name('destroy_all_api');
+
     });
 
     /*
