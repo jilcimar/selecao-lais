@@ -176,6 +176,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        Weidner\Goutte\GoutteServiceProvider::class,
+
+
 
 
     ],
@@ -229,6 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        'Goutte' => Weidner\Goutte\GoutteFacade::class,
 
     ],
 

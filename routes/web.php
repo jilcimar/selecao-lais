@@ -20,6 +20,9 @@ Route::group( ['middleware' => 'auth'], function()
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::resource('profissionais','ProfissionalController');
+
+    Route::get('/importar/dados', 'ProfissionalController@getDados')->name('importar_dados');
+
 });
 
 /*

@@ -10,6 +10,8 @@ use App\Models\Vinculacao;
 use Carbon\Carbon;
 use \GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
+use Weidner\Goutte\GoutteFacade;
 
 class ProfissionalController extends Controller
 {
@@ -163,5 +165,17 @@ class ProfissionalController extends Controller
             'Profissional deletado')->autoclose(5500);
 
         return redirect(url('/profissionais'));
+    }
+
+    public function getDados()
+    {
+
+        $crawler = GoutteFacade::request('GET', 'http://nicesnippets.com');
+
+        $crawler->filter('.blog-post-item h2 a')->each(function ($node) {
+
+            dump($node->text());
+
+        });
     }
 }

@@ -51,7 +51,7 @@
                                 <a href="{{url('profissionais')}}">Listar</a>
                             </li>
                             <li>
-                                <a href="#">Importar dados</a>
+                                <a href="{{route('importar_dados')}}">Importar dados</a>
                             </li>
                         </ul>
                     </li>
