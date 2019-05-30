@@ -211,37 +211,50 @@ class ProfissionalController extends Controller
 
             foreach ($nomes as $nome)
            {
-               $tipo = Tipo::firstOrCreate(
-                   ['descricao' => $tipos[$i][0] ]
-               );
 
-               $vinculo = Vinculacao::firstOrCreate(
-                   ['descricao' => $vinculos[$i][0] ]
-               );
+               if(!empty($datas [$i][0]))
+               {
+                   $tipo = Tipo::firstOrCreate(
+                       ['descricao' => $tipos[$i][0] ]
+                   );
 
-               $cbo = Cbo::firstOrCreate(
-                   ['descricao' => $cbos[$i][0] ]
-               );
+                   $vinculo = Vinculacao::firstOrCreate(
+                       ['descricao' => $vinculos[$i][0] ]
+                   );
 
+                   $cbo = Cbo::firstOrCreate(
+                       ['descricao' => $cbos[$i][0] ]
+                   );
 
-               $profissional = new Profissional([
-                    'nome' => $nome[0] ,
-                    'cns' =>$cns [$i][0],
-                    'data_atribuicao'=> Carbon::createFromFormat('d/m/Y', $datas [$i][0])->format('Y-m-d'),
-                    'carga_horaria'
-               ]);
-               $profissional->save();
+                   $tem_sus = false;
 
+                   if($sus [$i][0] == "SIM")
+                   {
+                       $tem_sus = true;
+                   }
 
-               dd($nome[0] . ' - '.$cns [$i][0]. ' - '. $datas [$i][0]. ' - '
-              . $cbos [$i][0]. ' - '. $carga_horaria [$i][0]. ' - '.$sus [$i][0]. ' - '.
-                  $vinculos [$i][0]. ' - '. $tipos[$i][0]
-              );
+                   $profissional = new Profissional([
+                       'nome' => $nome[0] ,
+                       'cns' =>$cns [$i][0],
+                       'data_atribuicao'=> Carbon::createFromFormat('d/m/Y', $datas [$i][0])->format('Y-m-d'),
+                       'carga_horaria' => $carga_horaria [$i][0] ,
+                       'sus' => $tem_sus,
+                       'cbo_id'=> $cbo->id,
+                       'tipo_id' => $tipo->id,
+                       'vinculacao_id' => $vinculo->id
+
+                   ]);
+                   $profissional->save();
+               }
 
            }
 
-
         });
+
+        alert()->success('Profissionais importados com sucesso',
+            'Profissionais Importados')->autoclose(5500);
+
+        return redirect(url('/profissionais'));
 
     }
 }
