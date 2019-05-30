@@ -10,6 +10,6 @@
                     </div>
                 </div>
             </div>
-            <p>Please wait...</p>
+            <p>Por favor aguarde...</p>
         </div>
     </div>

@@ -18,7 +18,7 @@
                     </h2>
                 </div>
                 <div class="body">
-                    <div class="table">
+                    <div class="table-responsive">
                         <table class="table  table-striped js-basic-example dataTable" id="tabela_profissionais">
                             <thead>
                             <tr>
@@ -30,9 +30,8 @@
                                 <th>CBO</th>
                                 <th>Tipo</th>
                                 <th>Vinculação</th>
-                                <th>
-                                    Ações
-                                </th>
+                                <th>Ações</th>
+
                                 <th>
                                     <input type="checkbox" class="selecionar_todos" id="selecionar_todos">
                                     <label for="selecionar_todos" title="Deletar TODOS os selecionados">Todos</label>
@@ -47,7 +46,7 @@
                                         <td>{{\Carbon\Carbon::parse($profissional['data_atribuicao'])->format('d/m/Y')}}</td>
                                         <td>{{$profissional['carga_horaria']}}</td>
                                         <td> @if($profissional['sus']==1) SIM @else NÃO @endif </td>
-                                        <td>{{$profissional['cbo']['codigo']}}</td>
+                                        <td>{{$profissional['cbo']['descricao']}}</td>
                                         <td>{{$profissional['tipo']['descricao']}}</td>
                                         <td>{{$profissional['vinculacao']['descricao']}}</td>
                                         <td>
@@ -72,7 +71,6 @@
                                         <td colspan="10" style="text-align: center">Sem itens</td>
                                     </tr>
                                 @endforelse
-
                             </tbody>
                         </table>
                     </div>

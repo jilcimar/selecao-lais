@@ -64,7 +64,6 @@ class ProfissionalController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['data_atribuicao' => Carbon::createFromFormat('d/m/Y', $request->data_atribuicao)->format('Y-m-d')]);
 
         $this->validate($request, [
             'nome' => 'required|string',
