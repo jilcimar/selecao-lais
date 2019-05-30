@@ -169,13 +169,51 @@ class ProfissionalController extends Controller
 
     public function getDados()
     {
+        $crawler = GoutteFacade::request('GET', 'http://cnes2.datasus.gov.br/Mod_Profissional.asp?VCo_Unidade=2408102653982');
 
-        $crawler = GoutteFacade::request('GET', 'http://nicesnippets.com');
+        $crawler->filter('#example')->filter('tr[class="gradeA"]')->each(function ($tr, $i) {
 
-        $crawler->filter('.blog-post-item h2 a')->each(function ($node) {
+            //Pegando os campos específicos
 
-            dump($node->text());
+           $nomes [$i] = $tr->filter('td')->eq(0)->each(function ($td, $i) {
+                   return trim($td->text());
+            });
+
+            $cns [$i] = $tr->filter('td')->eq(2)->each(function ($td, $i) {
+                   return trim($td->text());
+            });
+
+            $datas [$i] = $tr->filter('td')->eq(4)->each(function ($td, $i) {
+                return trim($td->text());
+            });
+
+            $cbos [$i] = $tr->filter('td')->eq(5)->each(function ($td, $i) {
+                return trim($td->text());
+            });
+
+            $carga_horaria [$i] = $tr->filter('td')->eq(9)->each(function ($td, $i) {
+                return trim($td->text());
+            });
+
+            $sus [$i] = $tr->filter('td')->eq(10)->each(function ($td, $i) {
+                return trim($td->text());
+            });
+
+            $vinculos [$i] = $tr->filter('td')->eq(11)->each(function ($td, $i) {
+                return trim($td->text());
+            });
+
+            $tipos [$i] = $tr->filter('td')->eq(12)->each(function ($td, $i) {
+                return trim($td->text());
+            });
+
+            foreach ($nomes as $nome)
+           {
+              dd($nome[0]);
+           }
 
         });
+
+
     }
 }

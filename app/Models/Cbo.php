@@ -8,7 +8,7 @@ class Cbo extends Model
 {
     protected $table = 'cbos';
 
-    protected $fillable = ['codigo', 'descricao'];
+    protected $fillable = ['descricao'];
 
 
 }

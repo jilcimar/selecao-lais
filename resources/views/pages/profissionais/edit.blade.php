@@ -120,7 +120,7 @@
                                 <select class="form-control show-tick" id="cbo_id"  data-live-search="true" name="cbo_id" required>
                                     <option disabled value="" selected>Selecione um CBO</option>
                                     @foreach($cbos as $cbo)
-                                        <option value="{{$cbo->id}}" {{$cbo->id==$profissional->cbo_id?'selected':''}}>{!! $cbo['codigo']!!} - {!!$cbo['descricao']!!}</option>
+                                        <option value="{{$cbo->id}}" {{$cbo->id==$profissional->cbo_id?'selected':''}}>{!!$cbo['descricao']!!}</option>
                                     @endforeach
                                 </select>
                             </div>
