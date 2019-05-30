@@ -18,7 +18,7 @@ class CreateProfissionaisTable extends Migration
             $table->string('nome');
             $table->char('cns','15');
             $table->date('data_atribuicao');
-            $table->integer('carga_horaria');
+            $table->string('carga_horaria');
             $table->boolean('sus');
 
            // FK's

@@ -64,12 +64,13 @@ class ProfissionalController extends Controller
      */
     public function store(Request $request)
     {
+        $request->merge(['data_atribuicao' => Carbon::createFromFormat('d/m/Y', $request->data_atribuicao)->format('Y-m-d')]);
 
         $this->validate($request, [
             'nome' => 'required|string',
             'cns' => 'required|integer',
             'data_atribuicao' => 'required|date',
-            'carga_horaria' => 'required|integer',
+            'carga_horaria' => 'required',
             'cbo_id' => 'required|integer',
             'tipo_id' => 'required|integer',
             'vinculacao_id' => 'required|integer',
@@ -131,7 +132,7 @@ class ProfissionalController extends Controller
             'nome' => 'required|string',
             'cns' => 'required|integer',
             'data_atribuicao' => 'required|date',
-            'carga_horaria' => 'required|integer',
+            'carga_horaria' => 'required',
             'cbo_id' => 'required|integer',
             'tipo_id' => 'required|integer',
             'vinculacao_id' => 'required|integer',
@@ -207,13 +208,40 @@ class ProfissionalController extends Controller
                 return trim($td->text());
             });
 
+
             foreach ($nomes as $nome)
            {
-              dd($nome[0]);
+               $tipo = Tipo::firstOrCreate(
+                   ['descricao' => $tipos[$i][0] ]
+               );
+
+               $vinculo = Vinculacao::firstOrCreate(
+                   ['descricao' => $vinculos[$i][0] ]
+               );
+
+               $cbo = Cbo::firstOrCreate(
+                   ['descricao' => $cbos[$i][0] ]
+               );
+
+
+               $profissional = new Profissional([
+                    'nome' => $nome[0] ,
+                    'cns' =>$cns [$i][0],
+                    'data_atribuicao'=> Carbon::createFromFormat('d/m/Y', $datas [$i][0])->format('Y-m-d'),
+                    'carga_horaria'
+               ]);
+               $profissional->save();
+
+
+               dd($nome[0] . ' - '.$cns [$i][0]. ' - '. $datas [$i][0]. ' - '
+              . $cbos [$i][0]. ' - '. $carga_horaria [$i][0]. ' - '.$sus [$i][0]. ' - '.
+                  $vinculos [$i][0]. ' - '. $tipos[$i][0]
+              );
+
            }
 
-        });
 
+        });
 
     }
 }
