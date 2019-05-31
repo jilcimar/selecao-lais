@@ -37,7 +37,7 @@ class ProfissionalController extends Controller
 //        $response = $request->getBody()->getContents();
 //        $profissionais = json_decode($response, true);
 
-        $profissionais = Profissional::with('cbo','tipo','vinculacao')->get();
+        $profissionais = Profissional::with('cbo','tipo','vinculacao')->paginate(10);
 
         return view('pages.profissionais.index', compact('profissionais'));
     }

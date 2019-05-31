@@ -18,8 +18,8 @@
                     </h2>
                 </div>
                 <div class="body">
-                    <div class="table-responsive">
-                        <table class="table  table-striped js-basic-example dataTable" id="tabela_profissionais">
+                    <div class="table">
+                        <table class="table  table-striped" id="tabela_profissionais">
                             <thead>
                             <tr>
                                 <th>Nome</th>
@@ -73,6 +73,7 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        {{$profissionais->links()}}
                     </div>
                 </div>
             </div>
