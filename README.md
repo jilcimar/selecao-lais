@@ -21,6 +21,26 @@ Caso esse requerimento seja satisfeito, basta rodar os seguintes comandos:
 $ composer update
 ```
 
+### Configuração do .env
+
+Deve existir um arquivo .env no diretório raiz do projeto. Um arquivo `.env.example é fornecido contendo as configurações
+padrões do projeto.
+
+É preciso rodar o seguinte comando para preencher o campo `APP_KEY` no `.env`.
+
+ ```bash 
+$ php artisan key:generate
+```
+
+Além disso, ainda no no `.env`. é preciso colocar a URL da API no parâmetro `API_URL` ,por exemplo:
+
+ ```bash 
+API_URL=http://localhost:8000
+```
+Se o parâmetro não for informado, o sistema usará como padrão `http://localhost:8000`
+
+
+
 ### Migração para ciração do banco de dados
 Para o SQLITE funcionar é preciso adicionar um arquivo 
 com o nome `database.sqlite` no diretório`database` do projeto:
@@ -41,26 +61,6 @@ Caso as migrações já tenham sido executadas elas podem ser desfeitas com o se
 ```bash
 $ php artisan migrate:rollback
 ```
-
-### Configuração do .env
-
-Deve existir um arquivo .env no diretório raiz do projeto. Um arquivo `.env.example é fornecido contendo as configurações
-padrões do projeto.
-
-É preciso rodar o seguinte comando para preencher o campo `APP_KEY` no `.env`.
-
- ```bash 
-$ php artisan key:generate
-```
-
-Além disso, ainda no no `.env`. é preciso colocar a URL da API no parâmetro `API_URL` ,por exemplo:
-
- ```bash 
-API_URL=http://localhost:8000
-```
-Se o parâmetro não for informado, o sistema usará como padrão `http://localhost:8000`
-
-
 
 ## Executar o projeto
 
