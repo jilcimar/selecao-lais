@@ -28,8 +28,8 @@ $ composer install
 
 ### Configuração do .env
 
-Deve existir um arquivo .env no diretório raiz do projeto. Um arquivo `.env.example é fornecido contendo as configurações
-padrões do projeto.
+Deve existir um arquivo `.env` no diretório raiz do projeto. Um arquivo `.env.example` é fornecido contendo as configurações
+padrões do projeto (Copie o conteúdo do `.env.example` para dentro do `.env`). 
 
 É preciso rodar o seguinte comando para preencher o campo `APP_KEY` no `.env`.
 
