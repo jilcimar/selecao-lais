@@ -95,7 +95,9 @@ class ProfissionalController extends Controller
      */
     public function show($id)
     {
-        //
+        $profissional = Profissional::find($id);
+
+        return view('pages.profissionais.show', compact('profissional'));
     }
 
     /**

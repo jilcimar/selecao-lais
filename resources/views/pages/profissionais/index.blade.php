@@ -51,7 +51,7 @@
                                         <td>{{$profissional['vinculacao']['descricao']}}</td>
                                         <td>
                                             <div class="table-options">
-                                                <a class='linkbtn' href="{{route('profissionais.edit', ['id'=> $profissional['id']])}}"
+                                                <a class='linkbtn' href="{{route('profissionais.show', ['id'=> $profissional['id']])}}"
                                                    title="Ver Profissional">
                                                     <i class="material-icons">search</i>
                                                 </a>
