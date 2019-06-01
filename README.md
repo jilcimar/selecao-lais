@@ -20,6 +20,11 @@ Caso esse requerimento seja satisfeito, basta rodar os seguintes comandos:
 ```bash
 $ composer update
 ```
+ou 
+
+```bash
+$ composer install
+```
 
 ### Configuração do .env
 
