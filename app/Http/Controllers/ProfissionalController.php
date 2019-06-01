@@ -32,7 +32,7 @@ class ProfissionalController extends Controller
      */
     public function index()
     {
-        $profissionais = Profissional::with('cbo','tipo','vinculacao')->paginate(10);
+        $profissionais = Profissional::with('cbo','tipo','vinculacao')->orderBy('nome','asc')->paginate(10);
 
         return view('pages.profissionais.index', compact('profissionais'));
     }
