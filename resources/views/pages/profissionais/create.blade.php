@@ -75,7 +75,7 @@
                         <div id="data_unica" style="display: block;">
                             <div class="form-group">
                                 <div class="form-line" id="sandbox-container">
-                                    <input type="text" id="sandbox-container" name="data_atribuicao" placeholder="Escolha a Data de Atribuição" class="form-control date"  value="{{ old('data_atribuicao') }}"autocomplete="off" required>
+                                    <input type="text" id="sandbox-container" name="data_atribuicao" placeholder="Escolha a Data de Atribuição" class="form-control date" autocomplete="off" required>
                                 </div>
                                 @if ($errors->has('data_atribuicao'))
                                     <span class="invalid-feedback">
@@ -132,7 +132,7 @@
                                 <select class="form-control show-tick" id="cbo_id"  data-live-search="true" name="cbo_id" required>
                                     <option disabled value="" selected>Selecione um CBO</option>
                                     @foreach($cbos as $cbo)
-                                        <option value="{{$cbo->id}}">{!!$cbo->descricao!!}</option>
+                                        <option value="{{$cbo->id}}" {{(old('cbo_id') == $cbo->id ? "selected":"")}}>{!!$cbo->descricao!!}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -151,7 +151,7 @@
                                 <select class="form-control show-tick" id="tipo_id" data-live-search="true" name="tipo_id" required>
                                     <option disabled value="" selected>Selecione um Tipo</option>
                                     @foreach($tipos as $tipo)
-                                        <option value="{{$tipo->id}}"> {!!$tipo->descricao!!}</option>
+                                        <option value="{{$tipo->id}}" {{(old('tipo_id') == $tipo->id ? "selected":"")}}> {!!$tipo->descricao!!}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -168,7 +168,7 @@
                                 <select class="form-control show-tick" id="vinculacao_id" data-live-search="true" name="vinculacao_id" required>
                                     <option disabled value="" selected>Selecione um Vínculo</option>
                                     @foreach($vinculacoes as $vinculo)
-                                        <option value="{{$vinculo->id}}">{!!$vinculo->descricao!!}</option>
+                                        <option value="{{$vinculo->id}}" {{(old('vinculacao_id') == $vinculo->id ? "selected":"")}}>{!!$vinculo->descricao!!}</option>
                                     @endforeach
                                 </select>
                             </div>

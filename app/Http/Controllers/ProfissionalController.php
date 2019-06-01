@@ -32,11 +32,6 @@ class ProfissionalController extends Controller
      */
     public function index()
     {
-//        $url = $this->api->rota('profissionais');
-//        $request = $this->client->get($url);
-//        $response = $request->getBody()->getContents();
-//        $profissionais = json_decode($response, true);
-
         $profissionais = Profissional::with('cbo','tipo','vinculacao')->paginate(10);
 
         return view('pages.profissionais.index', compact('profissionais'));
@@ -70,7 +65,7 @@ class ProfissionalController extends Controller
             'nome' => 'required|string',
             'cns' => 'required|max:15',
             'data_atribuicao' => 'required|date',
-            'carga_horaria' => 'required|max:2',
+            'carga_horaria' => 'required|digits:2|numeric|not_in:0',
             'cbo_id' => 'required|integer',
             'tipo_id' => 'required|integer',
             'vinculacao_id' => 'required|integer',
@@ -78,9 +73,6 @@ class ProfissionalController extends Controller
         ]);
 
         Profissional::create($request->all());
-
-//        $url = $this->api->rota('profissionais/store');
-//        (new Client())->request('POST', $url, ['json' => $request->all()])->getBody()->getContents();
 
         alert()->success('Profissional cadastrado com sucesso',
             'Profissional cadastrado')->autoclose(5500);
@@ -134,15 +126,13 @@ class ProfissionalController extends Controller
             'nome' => 'required|string',
             'cns' => 'required|max:15',
             'data_atribuicao' => 'required|date',
-            'carga_horaria' => 'required|max:2',
+            'carga_horaria' => 'required|digits:2|numeric|not_in:0',
             'cbo_id' => 'required|integer',
             'tipo_id' => 'required|integer',
             'vinculacao_id' => 'required|integer',
             'sus' => 'required'
         ]);
 
-//        $url = $this->api->rota('profissionais/update/'.$id);
-//        (new Client())->request('POST', $url, ['json' => $request->all()])->getBody()->getContents();
         $profissional = Profissional::find($id);
         $profissional->update($request->all());
 
@@ -160,7 +150,6 @@ class ProfissionalController extends Controller
      */
     public function destroy($id)
     {
-//        $this->client->get($this->api->rota('profissionais/destroy/'.$id));
         $profissional = Profissional::find($id);
         $profissional->delete();
 
