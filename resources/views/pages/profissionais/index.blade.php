@@ -44,7 +44,7 @@
                                         <td>{{$profissional['nome']}}</td>
                                         <td>{{$profissional['cns']}}</td>
                                         <td>{{\Carbon\Carbon::parse($profissional['data_atribuicao'])->format('d/m/Y')}}</td>
-                                        <td>{{$profissional['carga_horaria']}}</td>
+                                        <td>{{$profissional['carga_horaria']}}Hs.</td>
                                         <td> @if($profissional['sus']==1) SIM @else NÃO @endif </td>
                                         <td>{{$profissional['cbo']['descricao']}}</td>
                                         <td>{{$profissional['tipo']['descricao']}}</td>

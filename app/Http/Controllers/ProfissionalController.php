@@ -210,7 +210,6 @@ class ProfissionalController extends Controller
 
             foreach ($nomes as $nome)
            {
-
                if(!empty($datas [$i][0]))
                {
                    $tipo = Tipo::firstOrCreate(
@@ -232,11 +231,13 @@ class ProfissionalController extends Controller
                        $tem_sus = true;
                    }
 
+                   $hora = (int) substr($carga_horaria [$i][0], 0, 2);
+
                    $profissional = new Profissional([
                        'nome' => $nome[0] ,
                        'cns' =>$cns [$i][0],
                        'data_atribuicao'=> Carbon::createFromFormat('d/m/Y', $datas [$i][0])->format('Y-m-d'),
-                       'carga_horaria' => $carga_horaria [$i][0] ,
+                       'carga_horaria' => $hora,
                        'sus' => $tem_sus,
                        'cbo_id'=> $cbo->id,
                        'tipo_id' => $tipo->id,

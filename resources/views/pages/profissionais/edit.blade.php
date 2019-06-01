@@ -113,7 +113,6 @@
                             @endif
                         </div>
 
-
                         <label for="cbo_id">CBO</label>
                         <div class="form-group">
                             <div class="form-line">
@@ -130,8 +129,6 @@
                             </span>
                             @endif
                         </div>
-
-
 
                         <label for="tipo_id">Tipo</label>
                         <div class="form-group">
