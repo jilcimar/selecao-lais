@@ -25,6 +25,13 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/images/ui-icons_444444_256x240.png">
 
+    <!-- Datepicker -->
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link id="bs-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <link id="bsdp-css" href="{{asset('bootstrap-datepicker/css/bootstrap-datepicker3.css')}}" rel="stylesheet">
+    <script src="{{asset('bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{asset('bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.min.js')}}"></script>
+
 @endsection
 
 @section('content')
@@ -57,7 +64,7 @@
                         <label for="cns">CNS</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="number" value="{{$profissional->cns}}" id="cns" name="cns" class="form-control" placeholder="Digite o número CNS" required>
+                                <input type="text" value="{{$profissional->cns}}" id="cns" name="cns" class="form-control" onkeyup="validar(this,'num');" maxlength="15" placeholder="Digite o número CNS" required>
                             </div>
                             @if ($errors->has('cns'))
                                 <span class="invalid-feedback">
@@ -67,19 +74,22 @@
                         </div>
 
 
-                        <label for="data_atribuicao">Data de Atribuição</label>
-                        <div class="form-group">
-                            <div class="form-line">
-                                <input type="text" value="{{$profissional->data_atribuicao->format('d/m/Y')}}"
-                                       id="data_atribuicao" name="data_atribuicao" class="form-control date" OnKeyPress="format('##/##/####', this)" maxlength="10"
-                                        required>
+                        <label for="sandbox-container" id="sandbox-container">Data de Atribuição</label>
+                        <div id="data_unica" style="display: block;">
+                            <div class="form-group">
+                                <div class="form-line" id="sandbox-container">
+                                    <input type="text" id="sandbox-container" name="data_atribuicao" class="form-control date"  value="{{$profissional->data_atribuicao->format('d/m/Y')}}" autocomplete="off" required>
+                                </div>
                             </div>
-                            @if ($errors->has('data_atribuicao'))
-                                <span class="invalid-feedback">
-                                <strong>{{ $errors->first('data_atribuicao') }}</strong>
-                            </span>
-                            @endif
                         </div>
+
+                        <!--Script calendário -->
+                        <script>
+                            $('#sandbox-container input').datepicker({
+                                language: 'pt-BR',
+                                multidate: false
+                            });
+                        </script>
 
 
                         <label for="data_atribuicao">CH</label>
@@ -94,7 +104,6 @@
                             @endif
                         </div>
 
-
                         <label for="sus">SUS?</label>
                         <div class="form-group">
                             <div class="form-line">
@@ -102,7 +111,7 @@
                                     <input name="sus" value="1" type="radio" id="sim" {{$profissional->sus==1?'checked':''}}>
                                     <label for="sim">SIM</label>
                                     <br>
-                                    <input name="sus" value="0" type="radio" id="nao" {{$profissional->sus==2?'checked':''}}>
+                                    <input name="sus" value="0" type="radio" id="nao" {{$profissional->sus==0?'checked':''}}>
                                     <label for="nao">NÃO</label>
                                 </div>
                             </div>
@@ -176,27 +185,20 @@
 
 @section('footer-extra')
 
+    <script>$('#mdp-demo').multiDatesPicker();</script>
+
     <script src="{{ asset('js/pages/examples/sign-up.js') }}"></script>
 
     <script>
-        function format(mascara, documento) {
-            var i = documento.value.length;
-            var saida = mascara.substring(0, 1);
-            var texto = mascara.substring(i)
 
-            if (texto.substring(0, 1) != saida) {
-                documento.value += texto.substring(0, 1);
+        function validar(dom,tipo){
+            switch(tipo){
+                case'num':var regex=/[A-Za-z]/g;break;
+                case'text':var regex=/\d/g;break;
             }
-
+            dom.value=dom.value.replace(regex,'');
         }
     </script>
-
-    <!-- Input Mask Plugin Js -->
-    <script src="{{ asset('plugins/jquery-inputmask/jquery.inputmask.bundle.js') }}"></script>
-
-
-    <!-- Bootstrap Colorpicker Js -->
-    <script src="{{ asset('plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js') }}"></script>
 
     <!-- Dropzone Plugin Js -->
     <script src="{{ asset('plugins/dropzone/dropzone.js') }}"></script>
@@ -216,7 +218,5 @@
     <!-- noUISlider Plugin Js -->
     <script src="{{ asset('plugins/nouislider/nouislider.js') }}"></script>
 
-    <!-- Custom Page Js -->
-    <script src="{{ asset('js/pages/forms/advanced-form-elements.js') }}"></script>
 
 @endsection

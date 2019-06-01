@@ -22,6 +22,14 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/images/ui-icons_444444_256x240.png">
 
+    <!-- Datepicker -->
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link id="bs-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <link id="bsdp-css" href="{{asset('bootstrap-datepicker/css/bootstrap-datepicker3.css')}}" rel="stylesheet">
+    <script src="{{asset('bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{asset('bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.min.js')}}"></script>
+
+
 @endsection
 
 @section('content')
@@ -53,7 +61,7 @@
                         <label for="cns">CNS</label>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="number" value="{{ old('cns') }}" id="cns" name="cns" class="form-control" placeholder="Digite o número CNS" required>
+                                <input type="text" value="{{ old('cns') }}" id="cns" name="cns" class="form-control" placeholder="Digite o número CNS" onkeyup="validar(this,'num');" maxlength="15" required>
                             </div>
                             @if ($errors->has('cns'))
                                 <span class="invalid-feedback">
@@ -63,19 +71,27 @@
                         </div>
 
 
-
-                        <label for="data_atribuicao">Data de Atribuição</label>
-                        <div class="form-group">
-                            <div class="form-line">
-                                <input type="date" value="{{ old('data_atribuicao') }}" id="data_atribuicao" name="data_atribuicao" class="form-control" placeholder="Digite a data de atribuição" required>
+                        <label for="sandbox-container" id="sandbox-container">Data de Atribuição</label>
+                        <div id="data_unica" style="display: block;">
+                            <div class="form-group">
+                                <div class="form-line" id="sandbox-container">
+                                    <input type="text" id="sandbox-container" name="data_atribuicao" placeholder="Escolha a Data de Atribuição" class="form-control date"  value="{{ old('data_atribuicao') }}"autocomplete="off" required>
+                                </div>
+                                @if ($errors->has('data_atribuicao'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('data_atribuicao') }}</strong>
+                                    </span>
+                                @endif
                             </div>
-                            @if ($errors->has('data_atribuicao'))
-                                <span class="invalid-feedback">
-                                <strong>{{ $errors->first('data_atribuicao') }}</strong>
-                            </span>
-                            @endif
                         </div>
 
+                        <!--Script calendário -->
+                        <script>
+                            $('#sandbox-container input').datepicker({
+                                language: 'pt-BR',
+                                multidate: false
+                            });
+                        </script>
 
                         <label for="data_atribuicao">CH</label>
                         <div class="form-group">
@@ -174,18 +190,18 @@
 @endsection
 
 @section('footer-extra')
+
+    <script>$('#mdp-demo').multiDatesPicker();</script>
+
     <script src="{{ asset('js/pages/examples/sign-up.js') }}"></script>
 
     <script>
-        function format(mascara, documento) {
-            var i = documento.value.length;
-            var saida = mascara.substring(0, 1);
-            var texto = mascara.substring(i)
-
-            if (texto.substring(0, 1) != saida) {
-                documento.value += texto.substring(0, 1);
+        function validar(dom,tipo){
+            switch(tipo){
+                case'num':var regex=/[A-Za-z]/g;break;
+                case'text':var regex=/\d/g;break;
             }
-
+            dom.value=dom.value.replace(regex,'');
         }
     </script>
 

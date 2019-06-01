@@ -64,12 +64,13 @@ class ProfissionalController extends Controller
      */
     public function store(Request $request)
     {
+        $request->merge(['data_atribuicao' => Carbon::createFromFormat('d/m/Y', $request->data_atribuicao)->format('Y-m-d')]);
 
         $this->validate($request, [
             'nome' => 'required|string',
-            'cns' => 'required|integer',
+            'cns' => 'required|max:15',
             'data_atribuicao' => 'required|date',
-            'carga_horaria' => 'required|integer',
+            'carga_horaria' => 'required|max:2',
             'cbo_id' => 'required|integer',
             'tipo_id' => 'required|integer',
             'vinculacao_id' => 'required|integer',
@@ -131,9 +132,9 @@ class ProfissionalController extends Controller
 
         $this->validate($request, [
             'nome' => 'required|string',
-            'cns' => 'required|integer',
+            'cns' => 'required|max:15',
             'data_atribuicao' => 'required|date',
-            'carga_horaria' => 'required|integer',
+            'carga_horaria' => 'required|max:2',
             'cbo_id' => 'required|integer',
             'tipo_id' => 'required|integer',
             'vinculacao_id' => 'required|integer',

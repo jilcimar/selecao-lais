@@ -39,7 +39,7 @@
                         <div class="form-group">
                             <div class="form-line">
                                 <i class="material-icons">access_time</i>
-                                {{$profissional->carga_horaria}}.Hs
+                                {{$profissional->carga_horaria}} Hs
                             </div>
                         </div>
 
